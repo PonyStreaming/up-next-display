@@ -5,7 +5,6 @@ const SCHEDULE_URL = "https://schedule-api.ponyfest.horse/schedule"
 const ROOMS = [
     "Bit Rate's Stage",
     "Neural Net's Stage",
-    "Writing Room",
     "Art Theater",
     "Renegade Stage",
 ];
