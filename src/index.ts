@@ -1,7 +1,7 @@
 import './index.css';
 import {sleep} from "./utils";
 
-const SCHEDULE_URL = "https://schedule-api.ponyfest.horse/schedule/"
+const SCHEDULE_URL = "https://schedule-api.ponyfest.horse/schedule"
 const ROOMS = [
     "Bit Rate's Stage",
     "Neural Net's Stage",
