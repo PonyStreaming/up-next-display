@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/index.ts',
-    devtool: 'inline-source-map',
+    // devtool: 'inline-source-map',
     devServer: {
         disableHostCheck: true,
         contentBase: './dist',
@@ -20,10 +20,6 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
-            },
-            {
-                test: /\.woff2?$/,
-                use: 'file-loader',
             },
         ],
     },
