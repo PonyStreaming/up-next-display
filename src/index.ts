@@ -3,11 +3,9 @@ import {sleep} from "./utils";
 
 const SCHEDULE_URL = "https://schedule-api.ponyfest.horse/schedule"
 const ROOMS = [
-    "Bit Rate's Stage",
-    "Neural Net's Stage",
-    "Writing Room",
-    "Art Theater",
-    "Renegade Stage",
+    "Mane Events",
+    "Deep Dish Stage",
+    "Hoof Work Stage",
 ];
 
 interface InputEvent {
@@ -35,7 +33,7 @@ const currentRoom = new URLSearchParams(location.search).get("room") || "";
 let iteration = 0;
 async function renderLoop() {
     const myIteration = ++iteration;
-    const h1 = document.getElementById('heading')!;
+    const h1 = document.getElementById('heading')! as unknown as SVGTextElement;
     const p = document.getElementById('panel')!;
     let roomPointer = 0;
     let currentHeading = "";
@@ -75,7 +73,7 @@ async function renderLoop() {
             return;
         }
         first = false;
-        h1.innerText = heading;
+        h1.textContent = heading;
         p.innerText = text;
         currentHeading = heading;
         currentText = text;
@@ -86,11 +84,11 @@ async function renderLoop() {
 }
 
 function getCurrentEvent(room: string): Event | undefined {
-    const now = (new Date("2020-05-30T18:44:00-07:00")).getTime();
+    const now = Date.now(); //(new Date("2020-07-04T18:00:00-05:00")).getTime();
     let currentEvent: Event | undefined = undefined;
     for (const event of reversed(schedule[room])) {
         console.log(event.startTime, event.endTime);
-        if (now < event.endTime.getTime() - Math.max((event.endTime.getTime() - event.startTime.getTime()) / 4, 900000) && now > event.startTime.getTime() - 1800000) {
+        if (now < event.endTime.getTime() - Math.max((event.endTime.getTime() - event.startTime.getTime()) / 4, 900000) && now > event.startTime.getTime() - 2700000) {
             currentEvent = event;
         }
     }
