@@ -85,7 +85,7 @@ async function renderLoop() {
 }
 
 function getCurrentEvent(room: string): Event | undefined {
-    const now = (new Date("2020-05-30T18:44:00-07:00")).getTime();
+    const now = Date.now(); // (new Date("2020-09-19T18:44:00-07:00")).getTime();
     let currentEvent: Event | undefined = undefined;
     for (const event of reversed(schedule[room])) {
         console.log(event.startTime, event.endTime);
