@@ -89,7 +89,7 @@ function getCurrentEvent(room: string): Event | undefined {
     let currentEvent: Event | undefined = undefined;
     for (const event of reversed(schedule[room])) {
         console.log(event.startTime, event.endTime);
-        if (now < event.endTime.getTime() - Math.max((event.endTime.getTime() - event.startTime.getTime()) / 4, 900000) && now > event.startTime.getTime() - 2700000) {
+        if (now < event.endTime.getTime() - Math.max((event.endTime.getTime() - event.startTime.getTime()) / 4, 900000) && now > event.startTime.getTime() - 1800000) {
             currentEvent = event;
         }
     }

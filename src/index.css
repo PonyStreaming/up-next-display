@@ -10,6 +10,16 @@
     src: url("./Tondu_Beta.woff2");
 }
 
+@font-face {
+    font-family: "Segoe UI";
+    src: url("./segoeui.woff2");
+}
+
+@font-face {
+    font-family: "Segoe UI Black";
+    src: url("./segoeuib.woff2");
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -31,12 +41,13 @@ body.transitioning text, body.transitioning p {
 }
 
 #heading {
-    stroke: #172d61;
+    stroke: #301061;
     fill: white;
     stroke-width: 10px;
-    word-spacing: -10px;
-    font-size: 51px;
-    font-family: 'Comic Book', sans-serif;
+    stroke-linejoin: round;
+    font-size: 60px;
+    font-family: 'Segoe UI Black', sans-serif;
+    text-transform: uppercase;
     paint-order: stroke;
 }
 
@@ -45,19 +56,20 @@ body.transitioning text, body.transitioning p {
 }
 
 p {
-    font-family: Tondu;
+    font-family: "Segoe UI", sans-serif;
     font-size: 50px;
     color: white;
     margin: 0;
     padding: 0;
     padding-left: 5px;
     padding-top: 5px;
+    margin-top: -15px;
+    line-height: 57px;
     width: 100%;
     height: 125px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-text-stroke: 2px #172d61;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
