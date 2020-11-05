@@ -1,13 +1,8 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap');*/
 
 @font-face {
-    font-family: "Comic Book";
-    src: url("./Comic Book.woff");
-}
-
-@font-face {
-    font-family: "Tondu";
-    src: url("./Tondu_Beta.woff2");
+    font-family: "Eras Bold ITC";
+    src: url("./ErasBoldITC.ttf");
 }
 
 body {
@@ -31,33 +26,38 @@ body.transitioning text, body.transitioning p {
 }
 
 #heading {
-    stroke: #172d61;
-    fill: white;
+    stroke: black;
+    fill: url(#header-gradient);
     stroke-width: 10px;
     word-spacing: -10px;
     font-size: 51px;
-    font-family: 'Comic Book', sans-serif;
+    font-family: 'CC Monster Mash', sans-serif;
+    stroke-linecap: round;
     paint-order: stroke;
 }
 
+svg {
+    filter: drop-shadow(0px 5px 1px rgba(0.1, 0.1, 0.1, 0.8));
+}
 .time {
     font-style: italic;
 }
 
 p {
-    font-family: Tondu;
+    font-family: 'Eras Bold ITC';
     font-size: 50px;
     color: white;
     margin: 0;
     padding: 0;
     padding-left: 5px;
-    padding-top: 5px;
+    padding-top: 8px;
     width: 100%;
     height: 125px;
     text-overflow: ellipsis;
+    letter-spacing: -1px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-text-stroke: 2px #172d61;
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.7);
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
