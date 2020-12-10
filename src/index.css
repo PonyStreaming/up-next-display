@@ -5,6 +5,11 @@
     src: url("./ErasBoldITC.ttf");
 }
 
+@font-face {
+    font-family: "CC Monster Mash";
+    src: url("./ccmonstermash1.ttf");
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -14,18 +19,18 @@ body {
     /*background-color: #1d2c58;*/
 }
 
-text, p {
+#svgContainer, p {
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: linear;
     opacity: 1;
 }
 
-body.transitioning text, body.transitioning p {
+body.transitioning #svgContainer, body.transitioning p {
     opacity: 0;
 }
 
-#heading {
+#heading
     stroke: black;
     fill: url(#header-gradient);
     stroke-width: 10px;
