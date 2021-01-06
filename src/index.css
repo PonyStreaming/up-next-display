@@ -1,23 +1,13 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap');*/
 
 @font-face {
-    font-family: "Comic Book";
-    src: url("./Comic Book.woff");
+    font-family: "Headline";
+    src: url("./HEADOH__.ttf");
 }
 
 @font-face {
-    font-family: "Tondu";
-    src: url("./Tondu_Beta.woff2");
-}
-
-@font-face {
-    font-family: "Segoe UI";
-    src: url("./segoeui.woff2");
-}
-
-@font-face {
-    font-family: "Segoe UI Black";
-    src: url("./segoeuib.woff2");
+    font-family: "Mont";
+    src: url("./mont-heavy.woff2");
 }
 
 body {
@@ -40,14 +30,19 @@ body.transitioning text, body.transitioning p {
     opacity: 0;
 }
 
+svg {
+    margin-left: 30px;
+}
+
 #heading {
-    stroke: #301061;
     fill: white;
-    stroke-width: 10px;
-    stroke-linejoin: round;
-    font-size: 60px;
-    font-family: 'Segoe UI Black', sans-serif;
+    /*stroke: #301061;*/
+    /*stroke-width: 10px;*/
+    /*stroke-linejoin: round;*/
+    font-size: 80px;
+    font-family: 'Headline', sans-serif;
     text-transform: uppercase;
+    transform: scale(1, 0.7) rotate(0deg) translate(5px, 15px) skew(-7deg, 0deg);
     paint-order: stroke;
 }
 
@@ -56,13 +51,14 @@ body.transitioning text, body.transitioning p {
 }
 
 p {
-    font-family: "Segoe UI", sans-serif;
-    font-size: 50px;
+    font-family: "Mont", sans-serif;
+    font-weight: bold;
+    font-size: 60px;
     color: white;
     margin: 0;
     padding: 0;
     padding-left: 5px;
-    padding-top: 5px;
+    padding-top: 10px;
     margin-top: -15px;
     line-height: 57px;
     width: 100%;

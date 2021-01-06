@@ -5,8 +5,6 @@ const SCHEDULE_URL = "https://schedule-api.ponyfest.horse/schedule"
 const ROOMS = [
     "Bit Rate's Stage",
     "Neural Net's Stage",
-    "Art Theater",
-    "Renegade Stage",
 ];
 
 interface InputEvent {
@@ -29,7 +27,12 @@ interface Event {
 
 let schedule: {[room: string]: Event[]} = {};
 
-const currentRoom = new URLSearchParams(location.search).get("room") || "";
+const searchParams = new URLSearchParams(location.search)
+const currentRoom = searchParams.get("room") || "";
+const fixedTime = searchParams.get("date") ? Date.parse(searchParams.get("date")!) : null;
+if (fixedTime) {
+    console.log("Fake time!", fixedTime, new Date(fixedTime))
+}
 
 let iteration = 0;
 async function renderLoop() {
@@ -60,7 +63,11 @@ async function renderLoop() {
             continue;
         }
         deadRooms = 0;
-        const heading = (room === currentRoom ? "Here" : room.replace("'", "’")) + ":";
+        let prefix = "Up Next // \u2009"
+        if (event.startTime.getTime() < (fixedTime || Date.now())) {
+            prefix = "Now // \u2009";
+        }
+        const heading = prefix + (room == currentRoom ? "Right Here" : room.replace("'", "’"));
         const text = event.title;
         if (heading === currentHeading && text === currentText) {
             await sleep(10000);
@@ -85,11 +92,11 @@ async function renderLoop() {
 }
 
 function getCurrentEvent(room: string): Event | undefined {
-    const now = Date.now(); // (new Date("2020-09-19T18:44:00-07:00")).getTime();
+    const now = fixedTime || Date.now(); // (new Date("2020-09-19T18:44:00-07:00")).getTime();
     let currentEvent: Event | undefined = undefined;
     for (const event of reversed(schedule[room])) {
         console.log(event.startTime, event.endTime);
-        if (now < event.endTime.getTime() - Math.max((event.endTime.getTime() - event.startTime.getTime()) / 4, 900000) && now > event.startTime.getTime() - 1800000) {
+        if (now < event.endTime.getTime() - 600000 && now > event.startTime.getTime() - 1800000) {
             currentEvent = event;
         }
     }
