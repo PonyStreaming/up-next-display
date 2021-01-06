@@ -1,13 +1,8 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap');*/
 
 @font-face {
-    font-family: "Headline";
-    src: url("./HEADOH__.ttf");
-}
-
-@font-face {
-    font-family: "Mont";
-    src: url("./mont-heavy.woff2");
+    font-family: "Aller";
+    src: url("./Aller_Rg.ttf");
 }
 
 body {
@@ -19,31 +14,26 @@ body {
     /*background-color: #1d2c58;*/
 }
 
-text, p {
+text, p, img {
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: linear;
     opacity: 1;
 }
 
-body.transitioning text, body.transitioning p {
+body.transitioning text, body.transitioning p, body.transitioning img {
     opacity: 0;
 }
 
 svg {
     margin-left: 30px;
+    text-shadow: #46360f 0 0 10px;
 }
 
 #heading {
-    fill: white;
-    /*stroke: #301061;*/
-    /*stroke-width: 10px;*/
-    /*stroke-linejoin: round;*/
-    font-size: 80px;
-    font-family: 'Headline', sans-serif;
-    text-transform: uppercase;
-    transform: scale(1, 0.7) rotate(0deg) translate(5px, 15px) skew(-7deg, 0deg);
-    paint-order: stroke;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .time {
@@ -51,18 +41,18 @@ svg {
 }
 
 p {
-    font-family: "Mont", sans-serif;
+    font-family: "Aller", sans-serif;
     font-weight: bold;
     font-size: 60px;
     color: white;
     margin: 0;
     padding: 0;
     padding-left: 5px;
-    padding-top: 10px;
-    margin-top: -15px;
+    /*padding-top: 10px;*/
+    /*margin-top: -15px;*/
     line-height: 57px;
     width: 100%;
-    height: 125px;
+    height: 115px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;

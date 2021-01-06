@@ -1,11 +1,20 @@
 import './index.css';
 import {sleep} from "./utils";
 
+import here from "./here.png";
+import flank from "./flank.png";
+import mane from "./mane.png";
+
 const SCHEDULE_URL = "https://schedule-api.ponyfest.horse/schedule"
 const ROOMS = [
-    "Bit Rate's Stage",
-    "Neural Net's Stage",
+    "Mane Stage",
+    "Flank Stage",
 ];
+
+const ROOM_MAP: {[key: string]: string} = {
+    "Mane Stage": mane,
+    "Flank Stage": flank,
+}
 
 interface InputEvent {
     id: string;
@@ -37,7 +46,7 @@ if (fixedTime) {
 let iteration = 0;
 async function renderLoop() {
     const myIteration = ++iteration;
-    const h1 = document.getElementById('heading')! as unknown as SVGTextElement;
+    const h1 = document.getElementById('heading')! as HTMLImageElement;
     const p = document.getElementById('panel')!;
     let roomPointer = 0;
     let currentHeading = "";
@@ -54,7 +63,7 @@ async function renderLoop() {
         if (!event) {
             if (++deadRooms === ROOMS.length) {
                 deadRooms = 0;
-                h1.innerHTML = "&nbsp;";
+                h1.style.display = 'none';
                 p.innerText = "Thanks for joining us!";
                 currentHeading = "";
                 currentText = "Thanks for joining us!";
@@ -62,12 +71,13 @@ async function renderLoop() {
             }
             continue;
         }
+        h1.style.display = 'block';
         deadRooms = 0;
         let prefix = "Up Next // \u2009"
         if (event.startTime.getTime() < (fixedTime || Date.now())) {
             prefix = "Now // \u2009";
         }
-        const heading = prefix + (room == currentRoom ? "Right Here" : room.replace("'", "’"));
+        const heading = (room == currentRoom ? here : ROOM_MAP[room]!);
         const text = event.title;
         if (heading === currentHeading && text === currentText) {
             await sleep(10000);
@@ -81,7 +91,7 @@ async function renderLoop() {
             return;
         }
         first = false;
-        h1.textContent = heading;
+        h1.src = heading;
         p.innerText = text;
         currentHeading = heading;
         currentText = text;
