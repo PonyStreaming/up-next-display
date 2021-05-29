@@ -3,8 +3,9 @@ import {sleep} from "./utils";
 
 const SCHEDULE_URL = "https://schedule-api.ponyfest.horse/schedule"
 const ROOMS = [
-    "Bit Rate's Stage",
-    "Neural Net's Stage",
+    "Lunar Deck",
+    "Solar Deck",
+    "Gaming",
 ];
 
 interface InputEvent {
@@ -63,12 +64,20 @@ async function renderLoop() {
             continue;
         }
         deadRooms = 0;
-        let prefix = "Up Next // \u2009"
-        if (event.startTime.getTime() < (fixedTime || Date.now())) {
-            prefix = "Now // \u2009";
+        const currentTime = fixedTime || Date.now();
+        let prefix = `${Math.round((event.startTime.getTime() - currentTime) / 60000)} mins`;
+        if (event.startTime.getTime() <= currentTime) {
+            prefix = "Now";
         }
-        const heading = prefix + (room == currentRoom ? "Right Here" : room.replace("'", "’"));
+        const heading = prefix + " / " + (room == currentRoom ? "right here" : `${room.replace("'", "’")}`) + ":";
         const text = event.title;
+        // const countdownElement = document.getElementById('countdown')!
+        // if (event.startTime.getTime() - currentTime > 90000) {
+        //     countdownElement.innerHTML = `in ${Math.round((event.startTime.getTime() - currentTime) / 60000)} mins`;
+        //     countdownElement.style.opacity = '1';
+        // } else {
+        //     countdownElement.style.opacity = '0';
+        // }
         if (heading === currentHeading && text === currentText) {
             await sleep(10000);
             continue;
@@ -96,7 +105,7 @@ function getCurrentEvent(room: string): Event | undefined {
     let currentEvent: Event | undefined = undefined;
     for (const event of reversed(schedule[room])) {
         console.log(event.startTime, event.endTime);
-        if (now < event.endTime.getTime() - 600000 && now > event.startTime.getTime() - 1800000) {
+        if (now < event.endTime.getTime() - 600000 && now > event.startTime.getTime() - 3900000) {
             currentEvent = event;
         }
     }
